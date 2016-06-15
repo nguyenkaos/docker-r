@@ -1,3 +1,2 @@
-# Docker Container including RServe and the *forecast* package
-
-RServe container including the R forecast library
+# Docker RServe Forecast
+**Docker RServe Forecast** is a docker container that provides time series forecasting based on *R* and *RServe*. Therefore it includes the R *forecast* package.
