@@ -1,5 +1,5 @@
-# Use Ubuntu Xenial Xerus
-FROM ubuntu:xenial
+# Dotcloud ubuntu image
+FROM ubuntu:latest
 MAINTAINER SoerenHenning
 
 # Install latest R
