@@ -1,36 +1,23 @@
-# Dotcloud ubuntu image
-FROM ubuntu:latest
+# Use Ubuntu Xenial Xerus
+FROM ubuntu:xenial
 MAINTAINER SoerenHenning
 
-# Install latest R
-RUN sudo sh -c 'echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" >> /etc/apt/sources.list'
-# add the public keys:
-RUN gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
-RUN gpg -a --export E084DAB9 | sudo apt-key add -
+RUN apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
 
-# Update and install
-RUN apt-get update && apt-get install -y \
-  r-base \
-  r-recommended \
-  r-base-dev \
-  libcurl4-gnutls-dev \
-  libxml2-dev \
-  libmime-base64-urlsafe-perl \
-  libdigest-hmac-perl \
-  libdigest-sha-perl \
-  libssl-dev \
-  libapparmor1 \
-  wget
+RUN apt-get -y install apt-transport-https
+RUN echo 'deb https://cran.r-project.org/bin/linux/ubuntu xenial/' >> /etc/apt/sources.list.d/cran.list
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+RUN apt-get update
+RUN apt-get install -y r-base
 
-# log R version
+# Log R version
 RUN R --version
 
-#install R packages
-RUN sudo su - -c "R -e \"install.packages('Rserve', repos='http://cran.r-project.org')\""
-RUN sudo su - -c "R -e \"install.packages('forecast', repos='http://cran.r-project.org')\""
+ADD install-rserve.R /
+RUN Rscript install-rserve.R
 
-# adding start R script
-ADD start.R start.R
-ADD Rserv.conf /Rserv.conf
+ADD run.sh /
+RUN chmod +x /run.sh
 EXPOSE 6311
-CMD Rscript start.R
+ENV R_HOME /usr/lib/R
+CMD /run.sh
