@@ -15,8 +15,14 @@ RUN R --version
 ADD install-rserve.R /
 RUN Rscript install-rserve.R
 
-ADD run.sh /
-RUN chmod +x /run.sh
+# Start Rserve
+ADD start.R start.R
+ADD Rserv.conf /Rserv.conf
 EXPOSE 6311
-ENV R_HOME /usr/lib/R
-CMD /run.sh
+CMD Rscript start.R
+
+#ADD run.sh /
+#RUN chmod +x /run.sh
+#EXPOSE 6311
+#ENV R_HOME /usr/lib/R
+#CMD /run.sh
