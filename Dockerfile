@@ -9,6 +9,10 @@ RUN apt-get update && apt-get install -y r-base
 # Log R version
 RUN R --version
 
+# Install R packages
+ADD install-packages.R install-packages.R
+RUN Rscript install-packages.R
+
 # Start Rserve
 ADD start.R start.R
 ADD Rserv.conf /Rserv.conf
