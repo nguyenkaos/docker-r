@@ -1,13 +1,5 @@
-# Use Ubuntu Xenial Xerus
-FROM ubuntu:xenial
-MAINTAINER SoerenHenning
-
-RUN echo 'deb http://cran.r-project.org/bin/linux/ubuntu xenial/' >> /etc/apt/sources.list.d/cran.list
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
-RUN apt-get update && apt-get install -y r-base
-
-# Log R version
-RUN R --version
+FROM r-base
+MAINTAINER Jan Philip Bernius <janphilip@bernius.net>
 
 # Install R packages
 ADD install-packages.R install-packages.R
