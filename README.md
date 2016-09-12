@@ -1,3 +1,3 @@
-# Docker RServe Forecast
+# Docker R Forecast
 
-**Docker RServe Forecast** is a docker container that provides time series forecasting based on *R* and *RServe*. Therefore it includes the R *forecast* package.
+**Docker R Forecast** is a docker container that provides time series forecasting based on *R*. Therefore it includes the R *forecast* package.
