@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-    RRR:
+    rrr:
         build: ./base_latest
         tty: true
         ports:
