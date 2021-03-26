@@ -62,5 +62,11 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update
-RUN apt-get install libcurl4-openssl-dev
+RUN apt-get install libcurl4-openssl-dev tmux -y
+
+
+## INSTALL PACKAGE
+ADD install-packages.R install-packages.R
+RUN Rscript install-packages.R
+
 CMD ["R"]
