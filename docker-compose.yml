@@ -1,5 +1,9 @@
 version: "3"
 
 services:
-    base_r:
-        build: ./base_r
+    lkd_dev:
+        build: ./base_latest
+        tty: true
+        ports:
+          - 1100:8000
+
