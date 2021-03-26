@@ -1,0 +1,5 @@
+version: "3"
+
+services:
+    base_r:
+        build: ./base_r
