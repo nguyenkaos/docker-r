@@ -63,6 +63,7 @@ RUN apt-get update \
 
 RUN apt-get update
 RUN apt-get install libcurl4-openssl-dev tmux -y
+RUN apt-get install libssl-dev -y
 
 
 ## INSTALL PACKAGE
