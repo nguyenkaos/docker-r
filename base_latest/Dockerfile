@@ -62,7 +62,7 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update
-RUN apt-get install libcurl4-openssl-dev tmux -y
+RUN apt-get install libcurl4-openssl-dev tmux cron -y
 RUN apt-get install libssl-dev -y
 
 
